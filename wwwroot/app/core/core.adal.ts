@@ -8,7 +8,7 @@ module AngularTs.Core {
         $locationProvider.html5Mode(true).hashPrefix('!');
     }]);
       //ADAL
-    core.constant('appId', '41a24112-3ebc-4f38-9c85-167e30e99379');
+    core.constant('appId', 'ff702e8e-9aba-462b-b869-9572c17c87bf');
 	core.constant('powerBIResourceId', 'https://analysis.windows.net/powerbi/api');
     
     core.config(['$logProvider', function($logProvider: ng.ILogProvider) {
@@ -24,7 +24,7 @@ module AngularTs.Core {
     function adalConfigurator($httpProvider: ng.IHttpProvider, adalProvider: any, appId: string, powerBIResourceId: string) {
         var adalConfig = {
             instance: 'https://login.microsoftonline.com/',
-            tenant: 'sjkpdevs.onmicrosoft.com',//'common',
+            tenant: 'charlienowwot.onmicrosoft.com',//'common',
             clientId: appId,
             extraQueryParameter: 'nux=1',
             endpoints: {

@@ -21,6 +21,18 @@
 	</div>
 </ul>
 
-<iframe src="" id="embedIframe" width="500" height="500" frameborder="0"></iframe>
+<h1 class="ms-font-xxl">Reports</h1>
+<span ng-hide="vm.reports.length > 0">
+	loading
+</span>
+<div>
+  <ul class="ms-List">
+    <div class="ms-List-item is-selectable" ng-repeat="report in vm.reports track by report.id" ng-click="vm.insertReport(report)">
+      <span class="ms-ListItem-primaryText">{{report.name}}</span>
+    </div>
+  </ul>
+</div>
+
+<iframe src="" id="embedIframe" width="800" height="600" frameborder="0"></iframe>
 
 <p>Logged in as: {{userInfo.userName}}</p>

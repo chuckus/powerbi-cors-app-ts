@@ -4,7 +4,7 @@
         "removeComments": true,
         "sourceMap": true,
         "noImplicitAny": true,
-        "out": "wwwroot\\app.js"
+        "out": "wwwroot/app.js"
     },
     "files": ["wwwroot/typings/tsd.d.ts",
         "wwwroot/app/services/powerbi.service.ts",

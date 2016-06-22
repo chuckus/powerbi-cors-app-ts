@@ -14,6 +14,7 @@ module AngularTs.Home {
 
         public msg : string;
         public dashboards : PowerBi.API.IDashboard[] = [];
+        public reports : PowerBi.API.IReport[] = [];
         public tiles: PowerBi.API.ITile[] = [];
         private accessToken: string;
         private height = 500;
@@ -24,8 +25,15 @@ module AngularTs.Home {
            
            powerBi.getDashboards().then((res: PowerBi.API.IDashboard[]) => {
                this.dashboards = res;
-                console.log(res);
-           },(err: any) => {console.log(err);});
+               console.log('dashboards:');
+               console.log(res);
+           },(err: any) => {console.log('dashboards error='+err);});
+            
+           powerBi.getReports().then((res: PowerBi.API.IReport[]) => {
+               this.reports = res;
+               console.log('reports:');
+               console.log(res);
+           },(err: any) => {console.log('reports error='+err);});
            
            adalAuthenticationService.acquireToken(powerBIResourceId).then((res:any) => {
                this.accessToken = res;
@@ -60,6 +68,27 @@ module AngularTs.Home {
 
                 // construct the push message structure
                 var m = { action: "loadTile", accessToken: this.accessToken, height: h, width: w };
+                var message = JSON.stringify(m);
+                console.log(this.accessToken);
+                // push the message.
+                var iframe = this.getIframe();
+                iframe.contentWindow.postMessage(message, "*");;
+            }
+        }
+        
+        public insertReport(tile : PowerBi.API.ITile)
+        {
+            var iframe  = this.getIframe();
+            iframe.src = tile.embedUrl + "&width="+this.width+"&height="+this.height;
+            iframe.onload = () => {
+                if ("" === this.accessToken)
+                    return;
+
+                var h = this.height;
+                var w = this.width;
+
+                // construct the push message structure
+                var m = { action: "loadReport", accessToken: this.accessToken };
                 var message = JSON.stringify(m);
                 console.log(this.accessToken);
                 // push the message.
