@@ -21,7 +21,7 @@ module AngularTs.Home {
         private width = 500;
 
         constructor(private adalAuthenticationService: any, private powerBi : PowerBi.API.IService, powerBIResourceId: string) {
-           this.msg = 'Welcome to PowerBI Cors Sample';           
+           this.msg = 'Welcome to Map Of Agriculture\'s FarmMetrics';           
            
            powerBi.getDashboards().then((res: PowerBi.API.IDashboard[]) => {
                this.dashboards = res;

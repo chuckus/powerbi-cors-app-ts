@@ -1,38 +1,22 @@
-<h1>Home</h1>
-
-<p>{{vm.msg}}</p>
-<h1 class="ms-font-xxl">Dashboards</h1>
-<span ng-hide="vm.dashboards.length > 0">
-	loading
-</span>
-<div>
-	<ul class="ms-List">
-		<div class="ms-List-item is-selectable" ng-repeat="dashboard in vm.dashboards track by dashboard.id" ng-click="vm.selectDashboard(dashboard.id)">
-			<span class="ms-ListItem-primaryText">{{dashboard.displayName}}</span>
-		</div>
-	</ul>
-</div>
-
-
-<h1 class="ms-font-xxl">Tiles</h1>
-<ul class="ms-List">
-	<div class="ms-List-item is-selectable" ng-repeat="tile in vm.tiles track by tile.id" ng-click="vm.insertTile(tile)">
-		<span class="ms-ListItem-primaryText">{{tile.title}}</span>
-	</div>
-</ul>
-
-<h1 class="ms-font-xxl">Reports</h1>
+<div class="header">
+  <h1>FarmMetrics</h1>
+  <img src="http://demo.mapofagriculture.com/AgIcons/20151013/AgFarmMetrics_L.svg" alt="Description"/>
+  <p>Logged in as: {{userInfo.userName}}</p>
+  <p>{{vm.msg}}</p>
+  <h1 class="ms-font-xxl">Reports</h1>
 <span ng-hide="vm.reports.length > 0">
 	loading
 </span>
-<div>
-  <ul class="ms-List">
-    <div class="ms-List-item is-selectable" ng-repeat="report in vm.reports track by report.id" ng-click="vm.insertReport(report)">
-      <span class="ms-ListItem-primaryText">{{report.name}}</span>
-    </div>
-  </ul>
+  <div>
+    <ul class="ms-List">
+      <div class="ms-List-item is-selectable" ng-repeat="report in vm.reports track by report.id" ng-click="vm.insertReport(report)">
+        <span class="ms-ListItem-primaryText">{{report.name}}</span>
+      </div>
+    </ul>
+  </div>
+
+  <iframe src="" id="embedIframe" width="1600" height="900" frameborder="0"></iframe>
 </div>
 
-<iframe src="" id="embedIframe" width="800" height="600" frameborder="0"></iframe>
 
-<p>Logged in as: {{userInfo.userName}}</p>
+
